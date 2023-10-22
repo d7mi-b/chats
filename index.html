@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="./jQuery/jquery-3.7.1.min.js"></script>
+
+        <link rel="stylesheet" href="./style.css" >
+        <link rel="stylesheet" href="./fontawesome-free-6.4.2-web/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <title>Abdulrahman Bahyan</title>
+
+        <style>
+            * {
+                font-family: 'Cairo', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+
+            @font-face {
+                src: './fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf';
+                font-family: Cairo;
+            }
+
+            main {
+                width: fit-content;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 20px;
+                direction: rtl;
+            }
+
+            .icon-chat {
+                width: 50px;
+                height: 50px;
+                background-color: #212121;
+                color: #fefefe;
+                font-size: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                border-radius: 50%;
+                margin: .8rem;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .main {
+                width: 320px;
+                margin: 0 auto;
+                border-radius: 10px;
+                border: 1px solid #ddd;
+                box-shadow: 0 0 5px 1px #bbb;
+                display: none;
+                direction: ltr;
+            }
+            
+
+            .main header {
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .main header img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .main header h1 {
+                font-size: 1.1rem;
+                line-height: 1;
+                margin-top: 5px;
+            }
+
+            .main .chat {
+                background-color: #f0f0f0;
+                height: 350px;
+                overflow-y: scroll;
+                padding: 5px 15px;
+                scrollbar-color: #212121 #aaa;
+            }
+
+            .main .chat .message {
+                margin: 10px 5px;
+                padding: 5px 10px;
+                clear: both;
+                font-size: .9rem;
+                box-shadow: 0 0 5px 1px #bbb;
+                display: flex;
+            }
+
+            .main .chat .sender {
+                background-color: #212121;
+                color: #f0f0f0;
+                float: right;
+                border-radius: 10px 10px 0;
+            }
+
+            .main .chat .reciver {
+                background-color: #fefefe;
+                color: #212121;
+                float: left;
+                border-radius: 10px 10px 10px 0
+            }
+
+            .main .chat .date {
+                width: fit-content;
+                margin: 15px auto 10px;
+                background-color: #ddd;
+                color: #888;
+                border-radius: 20px;
+                font-size: .7rem;
+            }
+
+            .main .input {
+                padding: 10px 15px;
+            }
+
+            .main i {
+                color: #212121;
+                font-size: 1.2rem;
+                margin: 0 5px 0 0;
+                cursor: pointer;
+            }
+
+            .main .input i:last-of-type {
+                margin: 0 0 0 5px;
+            }
+
+            .main .input i:hover {
+                color: #353535;
+            }
+
+            .main input {
+                padding: 7px 12px;
+                border-radius: 20px;
+                border: 1px solid #ddd;
+                box-shadow: 0 0 10px 1px #ccc;
+            }
+
+            .main .input input::placeholder {
+                color: #212121;
+            }
+
+            .main .input input:focus-visible {
+                outline: none;
+                outline: 1px solid #aaa;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main id="chat">
+            <section class="main">
+                <header>
+                    <img src="./img/avatar.jpg" alt="iamge">
+                    <section class="content">
+                        <h1>Abdulrahman</h1>
+                        <p>online</p>
+                    </section>
+                    <i id="btnClose" class="fa-solid fa-x"></i>
+                </header>
+            
+                <section class="chat">
+                    <p class="message date">Sunday at 13:25</p>
+                    <p class="message sender">Hey, What's up Mr. Ahmed? 👋🏻</p>
+                    <p class="message reciver">Hello Abdulrahman, how are you?</p>
+                    <p class="message sender">Fine</p>
+                    <p class="message date">Sunday at 13:25</p>
+                    <p class="message sender">Hey, What's up Mr. Ahmed? 👋🏻</p>
+                    <p class="message reciver">Hello Abdulrahman, how are you?</p>
+                    <p class="message sender">Fine</p>
+                    <p class="message sender">Fine</p>
+                    <p class="message reciver">Hello Abdulrahman, how are you?</p>
+                </section>
+            
+                <section class="input">
+                    <form>
+                        <div>
+                            <i class="fa-solid fa-camera"></i>
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input type="text" name="message" placeholder="Type your message">
+                            <i id="btnSend" class="fa-solid fa-paper-plane"></i>
+                        </div>
+                    </form>
+                </section>
+            </section>
+
+            <section class="icon-chat">
+                <i class="fa-solid fa-message"></i>
+            </section>
+        </main>
+    </body>
+
+    <script>
+        $(document).ready(() => {
+            $("#chat .icon-chat").click(() => {
+                $("#chat .main").show(1500);
+            });
+
+            $("#btnClose").click(() => {
+                $("#chat .main").hide(1500);
+            });
+
+            $("#btnSend").click(() => {
+                if ($(".input input[type = 'text'").val()) {
+                    $('.chat').append(`
+                        <p class="message sender">${$(".input input[type = 'text'").val() }</p>
+                    `)
+                }
+            })
+        })
+    </script>
+</html>
