@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="./jQuery/jquery-3.7.1.min.js"></script>
+
+    <title>jQuery Challenge</title>
+
+    <style>
+        .addCard,
+        .addCard section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .addCard {
+            position: relative;
+        }
+
+        .addCard button {
+            overflow: hidden;
+            min-width: 10rem;
+            min-height: 4rem;
+        }
+
+        .addCard section {
+            background-color: #181818;
+            padding: 5px;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+            color: #eee;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .addCard .fa-cart-shopping {
+            display: none;
+            position: relative;
+            left: -500px;
+            font-size: 2rem;
+        }
+
+        .addCard span:first-of-type {
+            position: relative;
+            top: -500px
+        }
+
+        .addCard section span {
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body class="container-xxl py-2">
+    <section class="addCard">
+        <button id="btnAddCart" class="btn btn-light position-relative">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="budg" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                1
+            </span>
+            <span>Add Cart</span>
+        </button>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+        integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(() => {
+
+            $("#btnAddCart").click(() => {
+
+                $("#btnAddCart span:last-of-type").hide(2000);
+
+                $("#btnAddCart #budg").animate({
+                    top: "20px",
+                }, 2000);
+
+                $("#btnAddCart #budg").hide(500)
+
+                $(".addCard .fa-cart-shopping").show();
+
+                $(".addCard .fa-cart-shopping").animate({
+                    left: "0",
+                }, 2000);
+
+                $(".addCard .fa-cart-shopping").animate({
+                    left: "500px",
+                }, 2000);
+
+                $("#btnAddCart #budg").hide(1000);
+                $(".addCard .fa-cart-shopping").hide(1000);
+
+                $("#btnAddCart span:last-of-type").show(2500);
+            })
+        })
+    </script>
+</body>
+
+</html>
